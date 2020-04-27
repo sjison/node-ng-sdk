@@ -1,7 +1,7 @@
 FROM node:12.16.2-stretch-slim
 RUN mkdir -p ~/prebuild
 WORKDIR /prebuild
-# COPY NG 9.1.3 
 COPY package*.json /prebuild/
-RUN npm install
-# PRE-CACHE NPM
+RUN npm install npm@latest -g &&  echo n | npm install -g --silent @angular/cli  &&  echo n | npm install --silent @angular/cli &&  rm node_modules -fr && npm list -g && ls 
+WORKDIR /
+RUN rm /prebuild -fr
